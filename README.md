@@ -4,12 +4,23 @@ Alternative approach. Instead of brute forcing through IDs all the time, it requ
 
 It's running on node.js but it could be adapted to work in browsers.
 
-## Running
+## Install deps
 
 ```
+npm install
+```
+or
+```
 yarn
+```
+
+## Run it
+
+```
 node index.js ./data
 ```
+
+(you can spawn a dozen processes to parallelize it)
 
 ## TODO
 
