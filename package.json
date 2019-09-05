@@ -1,0 +1,12 @@
+{
+  "name": "tinypic-grabber",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Mateusz Biłgorajski <bilgorajskim@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "mime-types": "^2.1.24",
+    "node-fetch": "^2.6.0"
+  }
+}
