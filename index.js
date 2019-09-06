@@ -2,14 +2,20 @@ const fetch = require("node-fetch");
 const mime = require("mime-types");
 
 const outDir = process.argv[2];
-const numThreads = process.argv[3] ? parseInt(numThreads) : 1;
+const numThreads = process.argv[3] ? parseInt(process.argv[3]) : 1;
 const initialServer = process.argv[4];
 const initialId = process.argv[5];
 
 const MAX_TRIES = 20;
 const SLEEP_TIME = 2000;
 const TIMEOUT = 15000;
-const FORCE_SERVER = null; // change to 1-9 to always grab from specific server
+/*
+    Change to 1-9 to always use a specific server when searching
+    for a random image. If leaved null, it will randomize the server.
+    Even with FORCE_SERVER set, the server can still change when
+    following "next" links.
+*/
+const FORCE_SERVER = null;
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -134,7 +140,11 @@ function saveImage(server, filename, ext, bytes) {
 }
 
 function makeId() {
-    const length = 6;
+    /*
+        TinyPic uses 6 or 7 character IDs.
+        Let's search for both.
+    */
+    const length = Math.random() > 0.5 ? 6 : 7;
     let result           = '';
     let characters       = 'abcdefghijklmnopqrstuvwxyz0123456789';
     let charactersLength = characters.length;
@@ -182,6 +192,6 @@ async function main() {
     }
 }
 
-for (let i = 1; i < NUM_THREADS; i++) {
+for (let i = 1; i < numThreads; i++) {
     main();
 }
