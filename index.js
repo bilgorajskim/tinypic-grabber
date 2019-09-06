@@ -2,8 +2,9 @@ const fetch = require("node-fetch");
 const mime = require("mime-types");
 
 const outDir = process.argv[2];
-const initialServer = process.argv[3];
-const initialId = process.argv[4];
+const numThreads = process.argv[3] ? parseInt(numThreads) : 1;
+const initialServer = process.argv[4];
+const initialId = process.argv[5];
 
 const MAX_TRIES = 20;
 const SLEEP_TIME = 2000;
@@ -181,4 +182,6 @@ async function main() {
     }
 }
 
-main();
+for (let i = 1; i < NUM_THREADS; i++) {
+    main();
+}
