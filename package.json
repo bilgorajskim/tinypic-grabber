@@ -7,6 +7,6 @@
   "private": false,
   "dependencies": {
     "mime-types": "^2.1.24",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.1"
   }
 }
